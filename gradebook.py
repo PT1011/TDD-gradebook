@@ -16,7 +16,7 @@ def letter_grade(score):
 def is_passing(score):
     if not isinstance(score, (int, float)):
         raise TypeError("Score must be an integer or float")
-        
+
     return score >= 60
 
 def average(scores):
@@ -25,6 +25,9 @@ def average(scores):
 
     if len(scores) == 0:
         raise ValueError("There must be 1 or more scores in list")
+
+    if not all(isinstance(s, (int, float)) for s in scores):
+        raise TypeError("Scores in list must be an integer or float")
 
     return round(sum(scores) / len(scores), 2)
 
